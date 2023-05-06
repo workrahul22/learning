@@ -1,0 +1,48 @@
+Id              staffUserId                ManagerUserId
+1               2                           1
+2               3                           1
+3               4                           2
+4               5                           2
+5               6                           4
+
+# Get all the users and their immediate manager 
+select
+    user.username as staffName,
+    managerUser.username as ManagerName
+from 
+    user
+inner join 
+    manager on manager.staffUserId = user.id 
+inner join
+    user as ManagerUser on ManagerUser.id = manager.ManagerId
+
+
+DECLARE @UserId INT = 4 
+;with AllManagers (ManagerUserId, Position)
+AS 
+    (
+        select 
+            Managers.ManagerUserId
+            , 1 as Position
+        from 
+            managers
+        where
+            manager.staffUserId = @UserId
+
+        UNION ALL
+
+        SELECT 
+            Managers.ManagerUserId,
+            AllManagers.Position + 1 as Position
+        FROM 
+            AllManagers
+        INNER JOIN
+            managers on manager.staffUserId = AllManagers.ManagerUserId
+    )
+select 
+    users.username
+from
+    AllManagers,
+    AllManagers.Position
+INNER JOIN
+    users on AllManagers.managerUserId = User.Id

@@ -1,0 +1,199 @@
+There are different extended mysql available 
+    Percona Mysql - Cluster Based Mysql
+    Maria Db. -
+    Many more
+
+LAMP Stack :  Linux Apache Mysql
+
+General RDBMS Architecture:
+    Application Layer
+    Logical Layer
+    Physical Layer
+
+Mysql Architecture Overview
+
+Application Layer -> Logical Layer -> Physical Layer
+
+Logical Layer
+Query Processing -> Transaction Management
+Query Processing -> Recovery Management
+Transaction Management -> Storage Management
+Recovery Management -> Storage Management
+
+Physical Layer
+Pluggable Storage Engine -> File system
+Pluggable Storage Engine -> Files & Logs
+
+Examples Of Pluggable Storage Engine
+    MyISAM : Memory Database
+    InnoDb : 
+    NDB : For multiple Cluster
+    Archive : 
+    Federated
+    Memory
+    Merge
+    Partner
+    Community
+    Custom
+
+Mysql Physical Architecture
+    Mysql Base Directory
+        Program Log Files
+            Libraries
+            Document, support Files
+            pid Files
+            socket Files
+        Program Executable File
+            mysql
+            mysqld
+            mysqladmin
+            mysqldump
+            mysql_upgrade
+            mysqlbinlog 
+    Mysql Data Directory
+        Data Directory
+            Server Log Files
+                binlogs -> for replication log(source)
+                relaylog -> for replication(destination)
+            Status File
+            innodb log Files
+            innodb system tablespace
+            innodb log buffer
+            innodb general/undo/tmp tablespace
+        Data sub-Directory (Per Database)
+            Data and index files(.ibd)
+            Object structure files(.frm, .opt)
+    
+    Mainly deals with storage of variety of information, which is kept in secondary storage and accessed via storage 
+    manager. The types of data kept in the system are:
+
+    Data files, which store the user data in the database;
+
+    Data dictionary, which stores metadata about the structure of the database
+
+    Indexes, which provide fast access to data items that hold particular values
+
+    Statistical Data, which store statistical information about the data in the database; it is used by the query
+    processor to select efficient ways to execute a query
+
+    Log information, used to keep track of executed queries such that the recovery manager can use the information to
+    successfully recover the database in the case of system crash
+
+    MySQL server uses disk space for directories and files that are found under /var/lib/mysql to store all the 
+    following: Database directories
+        Each database corresponds to a single Directory
+        Table format files(.frm files) that contain a description of the table structure
+        Data and index files are created for each table by some storage engines and placed in the appropriate database 
+        Directory
+        The innoDB storage engine has its own tablespace and log files.
+            The tablespace contains data and index information for all InnoDB tables, as well as the undo logs that
+            are needed if a transaction must be rolled back.
+            The log files record information about committed transactions and are used to ensure that no data loss occurs.
+            The default tablespace file is named ibdata1 and the default log files are names ib_logfile0 and ib_logfile1
+    
+    A storage engine has a particular set of operational characteristics.
+
+    Storage engines differ in the way that they use locking to manage query contention, or in whether the tables they
+    provide are transactional or non-transactional
+
+    These engine properties have implications for query processing performance concurrency, and deadlock prevention
+
+    When you create a table, you can choose what storage engine to use.
+
+
+> show variables like 'basedir';      # will show you the base Directory
+> show variables like 'datadir';      # this is the data Directory
+> show databases;                     # show all databases
+> use employees;                      # change Database
+> select database();                  # show current selected database;
+> show tables;
+> show create table <table-name>      # show the script to create the table;
+> show create table <table-name>\G;
+
+$ tail 001f /var/log/mysqld.log    # see error log
+> create database mona;
+> create table test (id int, title varchar(20)) engine=myisam;
+> insert into test values ('1', 'ada');
+> commit 
+
+Configuration files
+    auto.conf : Contains Server uuid
+    my.cnf : MySQL configuration files
+
+Mysql Log Files
+    Error Log (Variable: log_error = mysqld.log)
+    General Log (Variables: general_log=1, general_log_file=PATH) does not require a server restart
+    Slow Query log(Variables: slow_query_log = 1, slow_query_log_file=PATH, long_query_time=sec)
+    Binary Log(variables: log_bin = 1)
+
+> show variables like 'general_log';
+> set global general_log=1;
+
+Mysql Logical Architecture
+
+Plugin -> connections/Thread handling
+Connectors: ODBC, JDBC, .NET etc -> Connection/Thread handling
+connections/Thread handling -> query cache/ Parser
+query cache -> Storage engine buffere and cache
+Parser -> optimizer
+optimizer -> storage engine
+
+(Table metadata cache)
+Key cache(For MyISAM)
+
+Client -> Query Cache -> Parser -> Parse Tree -> Preprocecessor -> Parse Tree -> Query optimizer
+-> Query Execution Plan -> Query Execution Engine -> Storage Engine -> Data
+Query Execution Engine -> Query Cache
+Query Execution Engine -> Client
+
+Query Processor consiste of
+    Embedded DML Pre-compiler
+    DDL compiler
+    Query Parser
+    Query Preprocecessor
+    Security/Integration manager
+    Query optimizer
+    Execution Engine
+
+    The outpit of one of the above component becomes the input for the another.
+    Query Preocessor layer is scalable and evolvable.
+
+Transaction Management
+    It facilitates concurrent data access
+    Providing locking facility
+    Ensure multiple users/sessions accedd data simultaneously in a consistent way
+    Prevents data corruption or data damage
+    Lock Manager is the sub component name that handles locking
+
+Recovery Management
+    Log Manager
+        Logs every operation executed in the database;
+        stores the operations logs as MySQL commands
+        In case of SYSTEM crash executing these commands will bring back the database to its stable state
+    Recovery Manager
+        Responsible for recovering the database to its last stable state
+        Uses the logs created by the log manager
+
+Memory Management
+    Buffer manager
+        It allocated memory resources.
+    Resource Manager
+        Accept the requests from execution engine.
+        Requests the details from buffer manager
+        It actually receives references of data with memory from buffer manager
+        Returns this data to the upper layer
+
+> show engines\G          # to get the engines details
+XA means cross table operation
+
+MySql Concepts : InnoDb
+    InnoDb tables are transaction safe storage engine that has commit, rollback, and crash recovery capabilities for
+    data protection
+    It supports row level locking
+    Foreign key referential-integrity constraing can be defined.
+    Tables can extand to any size event beyond multiple GB and power loss recovery in fast.
+    The InnoDB stores user data in clustered Indexes
+    This reduces I/O for common queries based on primary keys.
+    InnoDb should be used for applications requiring the data integrity.
+
+mysqlsh -> shell specific to language like js/python/sql

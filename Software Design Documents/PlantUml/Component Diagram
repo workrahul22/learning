@@ -1,0 +1,74 @@
+component
+    [First Component]
+    [Another Component] as comp1
+    component Comp3
+    component [Last\ncomponent] as Comp4
+
+Interface:
+    () "First Interface"
+    () "Another Interface" as Interf2
+    interface Interf3
+    interface "Last\ninterface" as Interf4
+
+Links:
+    ..  Dotted Line
+    --  straight Line
+    -->  arrow
+
+Using Notes:
+    note left of
+    note right of
+    note top of
+    note bottom of
+
+    Examples
+        note top of C as N
+            A left note can also 
+            be in several Line
+        end note
+
+        C .. N 
+
+Grouping Component
+    You can use several keyword to group components and interfaces together:
+        package
+            package "Some Group" {
+                HTTP - [First Component]
+                [Another Component]
+            }
+        node
+            node "Other Groups" {
+                FTP - [Second Component]
+                [First Component] --> FTP
+            }
+        folder
+        frame
+        cloud
+            cloud {
+                [Example 1]
+            }
+        database
+            database "MySQL" {
+                folder "This is my folder" {
+                    [Folder 3]
+                }
+                frame "Foo" {
+                    [Frame 4]
+                }
+            }
+
+Changing Arrow Direction:
+    -left->
+    -right->
+    -up->
+    -down->
+
+To use UML1 notation
+    skinparam componentStyle uml1 
+
+Use rectangle notation
+    skinparam componentStyle rectangle
+
+Individual Colors:
+    component [Web Server] #Yellow
+

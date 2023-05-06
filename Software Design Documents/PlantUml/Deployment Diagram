@@ -1,0 +1,30 @@
+Elements
+    actor
+    actor/
+    agent
+    artifact
+    boundary
+    card
+    circle
+    cloud
+    collections
+    component
+    control
+    database
+    entity
+    file
+    folder
+    frame
+    hexagon
+    interface
+    label
+    node
+    package
+    person
+    queue
+    rectangle
+    Stack
+    storage
+    usecase
+    usecase/
+    

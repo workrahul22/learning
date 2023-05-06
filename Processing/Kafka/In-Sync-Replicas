@@ -1,0 +1,11 @@
+Kafka considers that a record is committed when all replicas in the In-Sync Relicas set(ISR) have confirmed that
+theu have written the record to disk.
+
+    acks = 0 : The Producer never waits for an ack from the broker.
+    acks = 1 : The producer gets an ack that the leader has received the record.
+    acks = all : Producer gets an ack when all in-sync replicas have received the record.
+
+    Minimum In-Sync Replica :
+        How many replicas that are needed to be available for the producer to successfully send records to a partition.
+        A high number of minimum in-sync replicas gives a higher persistence, but on the other hand, might
+        reduce availability because the minimum number of replicas given must be available before a publish.

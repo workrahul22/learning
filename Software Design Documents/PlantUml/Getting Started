@@ -1,0 +1,7 @@
+Dependency: 
+    brew install --cask temurin
+    brew install graphviz
+    
+ShortCuts:
+    Alt + D   :  To start PlantUML Review
+

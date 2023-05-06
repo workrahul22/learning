@@ -1,0 +1,37 @@
+Why SEO
+    your competitors have better content than yours.
+    Improper usage of keywords
+    Poor link building practices
+        Internal Linking
+        External Linking
+    Your webpage load time is slow.
+    your website doesn't have a good user experience.
+    your website is de-indexed by mistake
+
+What is SEO
+    Search Engine Optimization is the practice of increasing organic traffic on serp(
+        search engine result page
+    )
+
+In SEO, few of the important ranking factors are:
+    Relevant content(Engaging and relevant content)
+    Suitable titles(Suitable title tags, URL)
+    Logical structure(Header tags)
+    Suitable synopsis(Meta description)
+    Neat and readable(Responsive design & Site speed)
+
+In SEO link building plays a vital role on the website's prominence, based on which
+Google undertands the credibility of the content.
+
+How does Google rank Websites?
+    Crawling
+    Indexing
+    Ranking
+
+Crawling: Crawling is a process by which search engine spiders/bots where then sacn a 
+            website and copy the entire website's content and stores it in search engine's
+            index.
+
+        Note: Based on this method, Google finds out which websites have relevant content
+        related to certain keywords.
+        

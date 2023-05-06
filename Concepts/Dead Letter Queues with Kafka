@@ -1,0 +1,11 @@
+A DLQ(Dead Letter Queue) should allow listing for viewing the contents of the queue, puring for clearing those contents and merging 
+for reprocessing the dead-lettered messages
+
+Solutions :
+	Processing in seperate queue:
+		To address the problem of blocked batches, we set up a distinct retry queue using a separate🤥 
+		defined kafka topic. When a consumer handler returns a failed response for a given message after 
+		a certain number of retries, the consumer publishes that message to its corresponding retry topic
+		The handler then returns true to the original consumer, which commits its offset.package Concepts
+
+		
