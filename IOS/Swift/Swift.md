@@ -250,7 +250,207 @@
     hasAnyMatches(list: numbers, condition: lessThanTen)
 ```
 
+#### Functions are actually a special case of closures: block of code that can be called later. The code in a closure has access to things like variables and functions that were available in the scope where the closure was created, even if the closure is in a different scope when it's executed -- you swa an example of this already with nested functions. You can write closure without a name by surrounding code with braces ({}). Use in to separate the arguments and return type from the body
+```swift
+    numbers.map({ (number: Int) -> Int in
+        let result = 3 * number
+        return result
+    })
+```
+```swift
+    let mappedNumbers = numbers.map({ number in 3*number})
+    print(mappedNumbers)
+```
 
+### You can refer to parameters by number instead of by name - this approach is especially useful in very short closures. A closure passed as the last argument to a function can appear immediately after the parentheses. When a closure is the only argument to a function, you can omit the parentheses entirely.
+```swift
+    let sortedNumbers = numbers.sorted { $0 > $1 }
+```
+
+### Objects And Classed
+
+```swift
+    class Shape {
+        var numberOfSides = 0
+
+        func simpleDescription() -> String {
+            return "A shape with \(numberOfSides) sides."
+        }
+    }
+    var shape = Shape()
+    shape.numberOfSides = 7
+    var shapeDescription = shape.simpleDescription()
+```
+
+#### This version of the Shape class is missing somthing important: an initializer to set up the class when an instance is created. Use init to create one.
+```swift
+    class NamedShape {
+        var numberOfSides: Int = 0
+        var name: String
+
+        init(name: String) {
+            self.name = name
+        }
+
+        func simpleDescription() -> String {
+            return "A shape with \(numberOfSides) sides."
+        }
+    }
+```
+#### Notice how self is used to distinguish the name property from the name argument to the initializer. 
+
+#### Use deinit to create a deinitializer if you need to perform some cleanup before the object is deallocated.
+#### Subclasses include their superclass name after their class name, separeted by a colon. There's no requirement for classes to subclass any standard root class, so you can include or omit a superclass as needed.
+
+### Mmethods on a subclass that override the superclass's implementation are marked with override - overriding a method by accident, without override, is detected by the compiler as an error. The compiler also detects methods with override that don't actually override any method in the superclass.
+```swift
+    class Square: NamedShape {
+        var sideLength: Double
+
+        init(sideLength: Double, name: String) {
+            self.sideLength = sideLength
+            super.init(name: name)
+            numberOfSides = 4
+        }
+
+        func area() -> Double {
+            return sideLength * sideLength
+        }
+
+        override func simpleDescription() -> String {
+            return "A square with sides of length \(sideLength)."
+        }
+    }
+
+    let test = Square(sideLength: 5.2, name: "my first square")
+    test.area()
+    test.simpleDescription()
+```
+
+#### in addition to simple properties that are stored, properties can have a getter and a setter.
+```swift
+    class EquilateralTrangle: NamedShape {
+        var sideLength: Double = 0.0
+
+        init(sideLength: Double, name: String) {
+            self.sideLength = sideLength
+            super.init(name: name)
+            numberOfSides = 3
+        }
+
+        var paimeter: Double {
+            get {
+                return 3.0 * sideLength
+            }
+            set {
+                sideLength = newValue / 3.0
+            }
+        }
+
+        override func simpleDescription() -> String {
+            return "An equilateral triangle with sides of length \(sideLength)."
+        }
+    }
+
+    var triangle = Equi;ateralTriangle(sideLength: 3.1, name: "a triangle")
+    print(triangle.parimeter)
+    triangle.parimeter = 9.9
+    print(triangle.sideLength)
+```
+
+### If you don't need to compute the property but still need to provide code that's run before and after setting a new value use willSet and didSet. For example the class below ensures that the side length of its triangle is always the same as the side length of its square.
+```swift
+    class TriangleAndSquare {
+        var triangle: EquilateralTriangle {
+            willSet {
+                square.sideLength = newValue.sideLength
+            }
+        }
+        var square: Square {
+            willSet {
+                triangle.sideLength = newValue.sideLength
+            }
+        }
+
+        init(side: Double, name: String) {
+            square = Square(sideLength: size, name: name)
+            triangle = EquilateralTriangle(sideLength: size, name: name)
+        }
+    }
+
+    var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
+    print(triangleAndSquare.square.sideLength)
+    print(triangleAndSquare.triangle.sideLength)
+    triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
+    print(triangleAndSquare.triangle.sideLength)
+```
+
+### Enumerations and Structures
+```swift
+    enum Rank: Int {
+        case ace = 1
+        case two, three, four, five, six, seven, eight, nine, ten
+        case jack, queen, king
+
+        func simpleDescription() -> String {
+            switch self {
+                case .ace:
+                    return "ace"
+                case .jack:
+                    return "jack"
+                case .queen:
+                    return "queen"
+                case .king:
+                    return "king"
+                default:
+                    return String(self.rawValue)
+            }
+        }
+    }
+    let ace = Rank.ace
+    let aceRawValue = ace.rawValue
+```
+
+
+### Concurrency: Use async to mark a function that runs asynchronously
+```swift
+    func fetchUserID(from server: String) async -> Int {
+        if server == "primary" {
+            return 97
+        }
+        return 501
+    }
+```
+
+### You mark a call to an asynchronous function by writing await in front of it.
+```swift
+    func fetchUsername(from server: String) async -> String {
+        let userID = await fetchUserID(from: server)
+        if userID = 501 {
+            return "John Appleseed"
+        }
+        return "Guest"
+    }
+```
+
+### Use async let to call an asynchronus function. letting it run in parallel with other asynchronous code. When you use the value it returns. write await 
+```swift
+    func connectUser(to server: String) async {
+        async let userID = fetchUserID(from: server)
+        async let username = fetchUsername(from: server)
+        let greeting = await "Hello \(username), user ID \(userID)"
+        print(greeting)
+    }
+```
+
+### Use Task to call asynchronous function from synchronous code. without waiting for them to return.
+```swift
+    Task {
+        await conectUser(to: "primary")
+    }
+```
+
+### Protocols and Extensions
 
 
 
