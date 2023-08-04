@@ -61,3 +61,72 @@ Design Patterns/Principles: Tried and tested solution to common desing problem.
 
 #### Introduction To OOPS:
 
+1. Sequental/Procedural Programming language:
+    ```c++
+        int main() {
+            int a = 10; // sequential: run line by line
+            print(a); // Procedural: execute multiple procedure or function.
+        }
+    ```
+
+Write a code to store and print the details of an animal.
+    animal -> name, id, sound.
+
+class: Blueprint of a real world entity
+    ```Java
+        class Student {
+            name
+            age
+            batch
+            experience
+            university
+        }
+
+        class Instructors {
+            name
+            age
+            experience
+        }
+
+        class Mentor {
+            name
+        }
+    ```
+
+Object: Objects are real instance of a class.
+
+Fields + Methods = Member of a class
+
+```puml
+    class Student {
+        String name
+        Int age
+        String batch
+        String university
+
+        batchChange()
+        pauseCourse()
+        incStreeks()
+
+    }    
+```
+
+State: The value of every field of a class at a particular time is known as the state of the class.
+
+```puml
+    class Human {
+        name
+        age
+        gender
+    }
+
+    class Student { 
+        coins
+        batch
+    }
+
+    class Instructor {
+        doj
+        ratings
+    }
+```
