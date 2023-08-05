@@ -1,0 +1,17 @@
+name: Generate diagrams
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  generate_plantuml:
+    runs-on: ubuntu-latest
+    name: plantuml
+    steps:
+    - uses: actions/checkout@v2
+    - name: plantuml
+      uses: grassedge/generate-plantuml-action@master
+      with:
+        path: diagrams
+      env:
+        GITHUB_TOKEN: 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
