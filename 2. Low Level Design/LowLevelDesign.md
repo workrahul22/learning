@@ -97,9 +97,7 @@ Object: Objects are real instance of a class.
 
 Fields + Methods = Member of a class
 
-<div hidden>
-```puml
-    @startuml diagram1
+```plantuml
     class Student {
         String name
         Int age
@@ -110,12 +108,8 @@ Fields + Methods = Member of a class
         pauseCourse()
         incStreeks()
 
-    }
-    @enduml   
+    }    
 ```
-</div>
-
-![](diagram1.svg)
 
 State: The value of every field of a class at a particular time is known as the state of the class.
 
