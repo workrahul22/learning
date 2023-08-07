@@ -97,23 +97,7 @@ Object: Objects are real instance of a class.
 
 Fields + Methods = Member of a class
 
-![Testing](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/plantuml/plantuml-server/master/src/main/webapp/resource/test2diagrams.txt)
-
-```plantuml:diagram1
-@startuml
-    class Student {
-        String name
-        Int age
-        String batch
-        String university
-
-        batchChange()
-        pauseCourse()
-        incStreeks()
-
-    }
-@enduml
-```
+![Diagram1](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/workrahul22/learning/master/2.%20Low%20Level%20Design/Introduction/diagram1.iump)
 
 ![](./diagram1.svg)
 

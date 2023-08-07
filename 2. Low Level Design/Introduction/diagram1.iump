@@ -1,0 +1,13 @@
+@startuml
+    class Student {
+        String name
+        Int age
+        String batch
+        String university
+
+        batchChange()
+        pauseCourse()
+        incStreeks()
+
+    }
+@enduml
