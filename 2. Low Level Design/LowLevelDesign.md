@@ -225,9 +225,17 @@ Inheritance: Way to organize different entity in my system.
         User <|-- Mentor
         User <|-- Student
         User <|-- Instructor
-        
-        class User {}
-        class Mentor {}
-        class Student {}
-        class Instructor {}
+
+        class User {
+
+        }
+        class Mentor {
+
+        }
+        class Student {
+
+        }
+        class Instructor {
+            
+        }
 ```
