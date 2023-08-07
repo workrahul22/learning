@@ -97,32 +97,43 @@ Object: Objects are real instance of a class.
 
 Fields + Methods = Member of a class
 
-![Diagram1](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/workrahul22/learning/master/2.%20Low%20Level%20Design/Introduction/diagram1.iump)
 
 ```mermaid
     classDiagram
-        class Duck{
-            +String beakColor
+        class Student {
+            +String name
+            +Int age
+            +String batch
+            +String university
+
+            +bool batchChange()
+            +bool pauseCourse()
+            +Int incStreeks()
         }
 ```
-![](./diagram1.svg)
 
 State: The value of every field of a class at a particular time is known as the state of the class.
 
-```puml
-    class Human {
-        name
-        age
-        gender
-    }
+```mermaid
+    classDiagram
+        Human <|-- Student
+        Human <|-- Instructor
 
-    class Student { 
-        coins
-        batch
-    }
+        class Human {
+            +String name
+            +Int age
+            +String gender
+        }
 
-    class Instructor {
-        doj
-        ratings
-    }
+        class Student { 
+            +Int coins
+            +String batch
+        }
+
+        class Instructor {
+            +Date doj
+            +Int ratings
+        }
 ```
+All the child class inherits the attributes and methods from their parent class.
+
