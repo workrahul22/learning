@@ -1,17 +1,8 @@
-name: Generate diagrams
-on:
-  push:
-    branches:
-      - "**"
 jobs:
-  generate_plantuml:
-    runs-on: ubuntu-latest
-    name: plantuml
-    steps:
-    - uses: actions/checkout@v2
-    - name: plantuml
-      uses: grassedge/generate-plantuml-action@master
+  embed-puml-markdown:
+    - name: Check out the repo
+      uses: actions/checkout@v2
       with:
-        path: diagrams
-      env:
-        GITHUB_TOKEN: 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
+        fetch-depth: 0
+    - name: Embed PlantUML inside Markdown
+      uses: alessandro-marcantoni/puml-markdown@v0.1.1
