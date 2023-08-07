@@ -99,6 +99,12 @@ Fields + Methods = Member of a class
 
 ![Diagram1](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/workrahul22/learning/master/2.%20Low%20Level%20Design/Introduction/diagram1.iump)
 
+```mermaid
+    classDiagram
+        class Duck{
+            +String beakColor
+        }
+```
 ![](./diagram1.svg)
 
 State: The value of every field of a class at a particular time is known as the state of the class.
