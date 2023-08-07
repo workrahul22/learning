@@ -97,6 +97,8 @@ Object: Objects are real instance of a class.
 
 Fields + Methods = Member of a class
 
+![Testing](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/plantuml/plantuml-server/master/src/main/webapp/resource/test2diagrams.txt)
+
 ```plantuml:diagram1
 @startuml
     class Student {
