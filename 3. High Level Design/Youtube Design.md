@@ -17,5 +17,5 @@ High Level Design
         APP
         ObjectStorage
 
-        User -> LoadBalancer
+        User --> LoadBalancer
 ```
