@@ -20,12 +20,22 @@ High Level Design
         end
         subgraph three
             APP
+            APP1
+            APP2
         end
         subgraph four
-            ObjectStorage[(Database)]
-            NoSql[(Database)]
+            ObjectStorage[(Object Storage)]
+            NoSql[(NoSQL Metadata structure)]
         end
 
         User --> LoadBalancer
         LoadBalancer --> APP
+        LoadBalancer --> APP1
+        LoadBalancer --> APP2
+        APP --> ObjectStorage
+        APP1 --> ObjectStorage
+        APP2 --> ObjectStorage
+        APP --> NoSql
+        APP1 --> NoSql
+        APP2 --> NoSql
 ```
