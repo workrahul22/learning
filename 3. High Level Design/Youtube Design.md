@@ -13,9 +13,9 @@ High Level Design
 ```mermaid
     flowchart LR
         User
-        Load Balancer
+        LoadBalancer
         APP
-        Object Storage
+        ObjectStorage
 
-        User -> Load Balancer
+        User -> LoadBalancer
 ```
