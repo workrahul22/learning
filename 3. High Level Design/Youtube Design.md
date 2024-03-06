@@ -31,7 +31,7 @@ High Level Design
         end
 
         subgraph queue
-            queue
+            encodingQueue
         end
 
         User --> LoadBalancer
