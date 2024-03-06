@@ -27,5 +27,5 @@ High Level Design
         end
 
         User --> LoadBalancer
-        LoadBalancer -> APP
+        LoadBalancer --> APP
 ```
