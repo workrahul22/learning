@@ -13,7 +13,24 @@ To get started, you can either scaffold the project with the Nest CLI, or clone 
     $ nest new project-name
 ```
 
-Note: To create a new Typescript project with stricter feature set, pass the --strict flag to the nest new command
+#### Controller
+
+Controller are responsible for handling incoming requests and returning response to the client.
+
+The response status code is always 200 by default, except for POST requests which use 201. we can easily change this behaviour by adding the @HttpCode decorator
+
+### Interceptors
+
+An interceptors is a class annotated with @Injectable decorator and implements the NestInterceptor interface. They make it possible to 
+
+1. bind extra logic before/after method execution.
+2. Transform the result returned from a function.
+3. Transform the exception thrown from a function.
+4. Extend the basic function behaviour.
+5. Completly override a function depending on specific conditions (e.g for caching purpose)
+
+
+
 
 
 
