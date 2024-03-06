@@ -12,20 +12,26 @@ High Level Design
 
 ```mermaid
     flowchart LR
-        subgraph one
+        subgraph client
             User
         end
-        subgraph two
+        subgraph LB
             LoadBalancer
         end
-        subgraph three
+        subgraph app
             APP
             APP1
             APP2
+            Encoding
         end
-        subgraph four
+        subgraph store
             ObjectStorage[(Object Storage)]
             NoSql[(NoSQL Metadata structure)]
+            Cache[(Redis Cache)]
+        end
+
+        subgraph queue
+            queue
         end
 
         User --> LoadBalancer
@@ -38,4 +44,9 @@ High Level Design
         APP --> NoSql
         APP1 --> NoSql
         APP2 --> NoSql
+        APP --> Cache
+        APP1 --> Cache
+        APP2 --> Cache
+        ObjectStorage --> queue
+        queue --> Encoding
 ```
