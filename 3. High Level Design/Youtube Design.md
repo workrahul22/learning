@@ -12,10 +12,20 @@ High Level Design
 
 ```mermaid
     flowchart LR
-        User
-        LoadBalancer
-        APP
-        ObjectStorage
+        subgraph one
+            User
+        end
+        subgraph two
+            LoadBalancer
+        end
+        subgraph three
+            APP
+        end
+        subgraph four
+            ObjectStorage[(Database)]
+            NoSql[(Database)]
+        end
 
         User --> LoadBalancer
+        LoadBalancer -> APP
 ```
