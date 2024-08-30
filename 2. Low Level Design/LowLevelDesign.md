@@ -1,17 +1,17 @@
 #### What is  LLD?
 
-1. Low level implementation details of a software system.
+1. Low-level implementation details of a software system.
 2. Organization of code.
 
 #### Why is LLD Important?
 
-Phonepe uses yes bank for all its UPI payments and when RBI banned yes bank then it makes only one day to phonepe to be back online all because of good code design and their code are not tightly coupled.
+Phonepe uses Yes Bank for all its UPI payments and when RBI banned Yes Bank, it took only one day for Phonepe to be back online because of good code design, and their code is not tightly coupled.
 
 #### Principles of good software
 
 1. Code Reuse.
-2. Why it is difficult to write code that is reusable?
-    a. Tight Cpupling
+2. Why is it difficult to write reusable code?
+    a. Tight Coupling
         ```Java
             pay(user) {
                 rozerpay(user)
@@ -24,7 +24,7 @@ Phonepe uses yes bank for all its UPI payments and when RBI banned yes bank then
     b. Hardcoded Things
         ```Java
             throw exception() {
-                print("Exception occured"); # not resuable
+                print("Exception occurred"); # not reusable
             }
         ```
 
@@ -36,11 +36,11 @@ Phonepe uses yes bank for all its UPI payments and when RBI banned yes bank then
 
         ```Java
             const PI = 3.14
-            findAreOfCircle(redius) {
-                return PI * (redius) ^ 2;
+            findAreOfCircle(radius) {
+                return PI * (radius) ^ 2;
             }
 
-            findCircumferenceOfCircle(redius) {
+            findCircumferenceOfCircle(radius) {
                 return PI *2*radius
             }
         ```
@@ -48,12 +48,12 @@ Phonepe uses yes bank for all its UPI payments and when RBI banned yes bank then
     a. new requirement
     b. new feature
 
-    example today we support Rozerpay and PayU and tomorrow we want to support paytm. Then how easy is to extend to the new payment provider will be benchmark for extensibility.
+    For example today we support Rozerpay and PayU and tomorrow we want to support Paytm. Then how easy it is to extend to the new payment provider will be a benchmark for extensibility.
 
     Reasons
-        a. New Platform: IOs/Web/Android
-        b. Change of user preferences
-        c. Product roadmap changes.
+       a. New Platform: IOs/Web/Android
+       b. Change of user preferences
+       c. Product roadmap changes.
 
 Design Patterns/Principles: Tried and tested solution to common desing problem.
     a. this will help to communicate with follow engineers
