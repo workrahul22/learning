@@ -1,3 +1,27 @@
+```mermaid
+    classDiagram
+    ClassA <|-- ClassB : Inherits
+    InterfaceA <|.. ClassC : Implements
+    ClassD *-- ClassE : Composes
+
+    class ClassA {
+    }
+    
+    class ClassB {
+    }
+    
+    class InterfaceA {
+    }
+    
+    class ClassC {
+    }
+    
+    class ClassD {
+    }
+    
+    class ClassE {
+    }
+```
 #### What is  LLD?
 
 1. Low-level implementation details of a software system.
