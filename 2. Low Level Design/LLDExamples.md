@@ -38,6 +38,7 @@
       -AccountStatus accountStatus
       +resetPassword(String newPassword)
     }
+    Account <|-- Person
 
     class Member{
       -int id
