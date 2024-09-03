@@ -65,6 +65,7 @@
       -ArrayList<Member> members
       +getTotalMembers()
     }
+    page *-- member
 
     class Post {
       -Member owner
@@ -74,6 +75,7 @@
       -Int totalShares
       +addLikes()
     }
+    post *-- member
 
     class Profile {
       -String profilePic
@@ -92,6 +94,7 @@
       +getMedia()
       +getText()
     }
+    Message *-- member
 
     class Comment {
       -String commented
@@ -100,6 +103,8 @@
       -Member owner
       +addLike()
     }
+
+    Comment *-- member
 
     class FriendRequest {
       -Member requestFrom
@@ -110,5 +115,7 @@
       +accept()
       +reject()
     }
+
+    FriendRequest *-- member
 
 ```
