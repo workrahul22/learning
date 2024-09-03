@@ -116,6 +116,6 @@
       +reject()
     }
 
-    FriendRequest *-- member
+    FriendRequest *-- Member
 
 ```
