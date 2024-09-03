@@ -197,28 +197,28 @@ Only child class can be type casted to a parent class.
 
 ### OOP Principles and Solid Principles
 
-Abstraction: Represent all details for an entity in a context and hiding the complexity of a system.
+Abstraction: Represent all details for an entity in a context and hiding the complexity of a system. Data abstraction is the property by which only the essential details are displayed to the user. Abstraction can be achieved by interfaces and abstract classes. We can achieve 100% abstraction using interfaces. The abstract method contains only method declaration but not implementation.
 1. It will omit the non-needed details.
-2. Abstraction is the benifit oops provide.
-3. OOP's provide abstraction on 3 pillers
+2. Abstraction is the benefit oops provide.
+3. OOPs provide abstraction on 3 pillars
     a. Encapsulation
     b. Inheritance
     c. Polymorphism.
 4. Exposing behaviours that client needs to use.
 
-Encapsulation: Holding data & behaviour together and prevent external things from modifying the internal details.
+Encapsulation: Holding data & behavior together and preventing external things from modifying the internal details.
     Access Modifier
-        a. private: only accessible inside the class (not accessible inside child class).
+        a. private: only accessible inside the class (not inside the child class).
         b. public: publically accessible
-        c. protected: only accessible inside a package
+        c. protected: only accessible inside a packaged. 
         d. default:
 
-*Golden Rule : If you anytime make an API public, you are forced to support it.
+*Golden Rule: If you make an API public anytime, you are forced to support it.
 
-Inheritance: Way to organize different entity in my system.
+Inheritance: This is a way to organize different entities in my system. One class is allowed to inherit the features of another class.
 
-    Has-a : It means composition
-    is-a : It meand Inheritance
+    Has-a: It means composition
+    is-a: It means Inheritance
 
 ```mermaid
     classDiagram
@@ -240,15 +240,16 @@ Inheritance: Way to organize different entity in my system.
         }
 ```
 
-Benifits
+Benefits
 1. Code Reuse
 2. Extensibility
 
-Extension mean adding new things not changing and adding new things.
-Overriding is not extension.
-Overriding is not the best use of inheritence. so use composition
+Extension means adding new things not changing and adding new things.
+Overriding is not an extension.
+Overriding is not the best use of inheritance. so use composition
 
 Polymorphism (Many forms)
+The ability of object-oriented programming languages to differentiate between entities with the same name efficiently.
 
 ```mermaid
     classDiagram
@@ -290,9 +291,9 @@ No need to know the real data type.
     }
 ```
 
-Polymorphism is when the client don't need to know the real data type.
+Polymorphism is when the client doesn't need to know the real data type.
 
-We are in a jungle and there is a dob type SHIHTZU that does not make sound.
+We are in a jungle and there is a dob-type SHIHTZU that does not make sound.
 
 ```mermaid
     classDiagram
@@ -333,10 +334,10 @@ We are in a jungle and there is a dob type SHIHTZU that does not make sound.
     }
 ```
 
-Now imagine animal that can not walk as well as sound
-let's imagine two dogs which makes the same sound
+Now imagine an animal that can not walk as well as sound
+let's imagine two dogs which make the same sound
 
-How will we support all this.
+How will we support all this?
 
 ```mermaid
     flowchart TD
@@ -346,16 +347,16 @@ How will we support all this.
         Animal --> None
 ```
 
-Now lets say we have 8 different behaviours then how many different subclass will be there to support.
+Now let's say we have 8 different behaviours then how many different subclass will be there to support.
     Number of class = $2^8$  # very bad design to implement.
 
-Issues with Inheritence
+Issues with Inheritance
     1. class overload
     2. code duplication.
 
-we should only use Inheritence when we only talk about physical properties. And when we talk about behaviour we should not use inheritance. we should use interface.
+we should only use inheritance when we talk about physical properties. And when we talk about behaviour we should not use inheritance. we should use an interface.
 
-If a behaviour is certain then that can be included in the base class of inheritance other wise create an interface for that behaviour.
+If a behavior is certain then that can be included in the base class of inheritance other create an interface for that behaviour.
 
 ```mermaid
     classDiagram
