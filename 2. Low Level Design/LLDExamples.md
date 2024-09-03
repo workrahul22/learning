@@ -94,7 +94,7 @@
       +getMedia()
       +getText()
     }
-    Message *-- member
+    Message *-- Member
 
     class Comment {
       -String commented
@@ -104,7 +104,7 @@
       +addLike()
     }
 
-    Comment *-- member
+    Comment *-- Member
 
     class FriendRequest {
       -Member requestFrom
