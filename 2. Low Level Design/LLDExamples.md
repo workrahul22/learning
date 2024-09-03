@@ -65,7 +65,7 @@
       -ArrayList<Member> members
       +getTotalMembers()
     }
-    page *-- member
+    Page *-- Member
 
     class Post {
       -Member owner
@@ -75,7 +75,7 @@
       -Int totalShares
       +addLikes()
     }
-    post *-- member
+    Post *-- Member
 
     class Profile {
       -String profilePic
