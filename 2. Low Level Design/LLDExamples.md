@@ -24,6 +24,7 @@
     }
 
     class Person {
+      <<abstract>>
       -String name
       -String email
       -String phone
