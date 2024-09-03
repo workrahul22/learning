@@ -29,6 +29,7 @@
       -String phone
     }
 
+    Person *-- Address
     class Account {
       -String id
       -String password
