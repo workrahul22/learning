@@ -32,6 +32,7 @@
 
     Person *-- Address
     class Account {
+      <<abstract>>
       -String id
       -String password
       -Person person
@@ -49,11 +50,13 @@
       +sendRequest(Member sendTo)
       +createPost()
     }
+    Member <|-- Account
 
     class System {
       +blockMember(Member name)
       +unblockMember(Member name)
     }
+    System <|-- Account
 
     class Page {
       -String name
