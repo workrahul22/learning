@@ -8,7 +8,7 @@ fun main() {
 1. val -> Constant
 2. var -> Variables
 
-```
+```kotlin
     val name = "scala"
     var a = "abcd"
 ```
@@ -25,7 +25,7 @@ fun main() {
    ```
 
 ## Condition
-```
+```kotlin
     val name = if(condition) {
         body1
     } else {
@@ -45,24 +45,24 @@ fun main() {
 ```
 
 ## Nullable Variable
-```
+```kotlin
     var favouriteActor: String? = "Rahul"
     favouriteActor = null
 ```
 
 ### Elvis Operator
-```
+```kotlin
     var name = nullableVariable?.methodProperty? : defaultValue
     favouriteActor?.length ?: 0
 ```
 
 ### Not Nullable Assertion
-```
+```kotlin
     favouriteActor!!.length
 ```
 
 ### Getter Setter
-```
+```kotlin
     var speakerVolume = 2
         get() = field
         set(value) {
@@ -100,7 +100,7 @@ Quick Facts
     }
 ```
 
-```
+```kotlin
     import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -305,7 +305,7 @@ fun main() {
 4. Internal -> Only accessible inside the module
 
 ### Object
-```
+```kotlin
     val t1 = Lamp()
     t1.turnOn()
 ```
@@ -346,18 +346,18 @@ By using the open annotation on a class, compiler allows you to derive new class
     while() {}
 ```
 
-```
+```kotlin
     do {
     } while(-)    
 ```
 
-```
+```kotlin
     for(item in collection) {}
     for(i in 1..5) {}
 ```
 
 ### Primary Constructor
-```
+```kotlin
     class Person(var name: String, var age: Int) {
         fun canVote(age: Int) {
             if(age < 18) {
@@ -372,7 +372,7 @@ By using the open annotation on a class, compiler allows you to derive new class
     obj1.canVote(age: 22)
 ```
 
-```
+```kotlin
     class Person(fName: String, personAge: Int) {
         val firstName: String
         var age: Int
@@ -388,14 +388,14 @@ By using the open annotation on a class, compiler allows you to derive new class
 
 ### Secondary Constructor
 
-```
+```kotlin
     class Log {
         constructor(data: String) {}
         constructor(data: String, numberOfData: Int) {}
 ```
 
 ### Function
-```
+```kotlin
     fun methodName(parameter1, paramer2): ReturnType {
 
     }
@@ -410,7 +410,7 @@ By using the open annotation on a class, compiler allows you to derive new class
 
 ### Arrays
 
-```
+```kotlin
     var arr = arrayof("one", "two", "three")
     arr.set(0,5)
     arr.get(0)
@@ -422,7 +422,7 @@ you can store function in a variable
 pass them to other functions as argument
 Return them from other functions
 
-```
+```kotlin
     fun main() {
         val trickFunction = ::trick
     }
@@ -432,7 +432,7 @@ Return them from other functions
     }    
 ```
 
-```
+```kotlin
     val trick = {
         println("No Treat")
     }
@@ -443,7 +443,7 @@ Return them from other functions
     }
 ```
 
-```
+```kotlin
     val treat: (Int) -> String = {
     }
 
@@ -451,7 +451,7 @@ Return them from other functions
     }
 ```
 
-```
+```kotlin
     fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)? : () -> Unit {
         if(isTrick) {
             return trick
@@ -462,7 +462,7 @@ Return them from other functions
         }
 ```
 
-```
+```kotlin
     repeat(4) {
         treatFunction()
     }
